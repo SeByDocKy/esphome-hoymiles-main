@@ -91,7 +91,12 @@ void HoymilesRadio_CMT::init(const int8_t pin_sdio, const int8_t pin_clk, const 
     _radio.reset(new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs));
 
     state = _radio->begin();
-    Hoymiles.getMessageOutput()->println("CMT INIT = %d" , state);
+    if (state){
+       Hoymiles.getMessageOutput()->println("Radio begin OK" );
+    }
+    else{
+       Hoymiles.getMessageOutput()->println("Radio begin KO" );
+    }
     // ESP_LOGD("CMT INIT" , "Begin() state =%d" , state);
 
     setCountryMode(CountryModeId_t::MODE_EU);
