@@ -22,7 +22,7 @@ HoymilesClass Hoymiles;
 void HoymilesClass::init()
 {
     _pollInterval = 0;
-    _radioNrf.reset(new HoymilesRadio_NRF());
+    // _radioNrf.reset(new HoymilesRadio_NRF());
     _radioCmt.reset(new HoymilesRadio_CMT());
 }
 
@@ -39,7 +39,7 @@ void HoymilesClass::initCMT(const int8_t pin_sdio, const int8_t pin_clk, const i
 void HoymilesClass::loop()
 {
     std::lock_guard<std::mutex> lock(_mutex);
-    _radioNrf->loop();
+    // _radioNrf->loop();
     _radioCmt->loop();
 
     if (getNumInverters() == 0) {
