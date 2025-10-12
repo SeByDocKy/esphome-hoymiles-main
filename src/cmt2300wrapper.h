@@ -88,6 +88,7 @@ public:
      */
     uint8_t getDynamicPayloadSize(void);
 
+    int getRssiCode();
     int getRssiDBm();
 
     bool setPALevel(const int8_t level);
