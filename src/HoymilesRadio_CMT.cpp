@@ -85,21 +85,30 @@ bool HoymilesRadio_CMT::cmtSwitchDtuFreq(const uint32_t to_frequency)
 
 void HoymilesRadio_CMT::init(const int8_t pin_sdio, const int8_t pin_clk, const int8_t pin_cs, const int8_t pin_fcs, const int8_t pin_gpio2, const int8_t pin_gpio3)
 {
-    bool state;
+    bool a,b;
     _dtuSerial.u64 = 0;
 
     _radio.reset(new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs));
 
-    _radio->begin();
+    a = CMT2300A->_init_pins();
+    if (a){
+       Hoymiles.getMessageOutput()->println("init_pin OK" );
+    }
+    else{
+       Hoymiles.getMessageOutput()->println("init_pin KO" );
+    }
     
-    // state = _radio->begin();
-    // if (state){
-    //    Hoymiles.getMessageOutput()->println("Radio begin OK" );
-    // }
-    // else{
-    //    Hoymiles.getMessageOutput()->println("Radio begin KO" );
-    // }
-   
+    b = CMT2300A->_init_radio();
+
+    if (b){
+       Hoymiles.getMessageOutput()->println("init_radio OK" );
+    }
+    else{
+       Hoymiles.getMessageOutput()->println("init_radio KO" );
+    }
+
+   // _radio->begin();
+       
 
     setCountryMode(CountryModeId_t::MODE_EU);
     cmtSwitchDtuFreq(_inverterTargetFrequency); // start dtu at work freqency, for fast Rx if inverter is already on and frequency switched
