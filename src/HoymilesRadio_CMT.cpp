@@ -90,16 +90,16 @@ void HoymilesRadio_CMT::init(const int8_t pin_sdio, const int8_t pin_clk, const 
 
     _radio.reset(new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs));
 
-    // _radio->begin();
+    _radio->begin();
     
-    state = _radio->begin();
-    if (state){
-       Hoymiles.getMessageOutput()->println("Radio begin OK" );
-    }
-    else{
-       Hoymiles.getMessageOutput()->println("Radio begin KO" );
-    }
-    // ESP_LOGD("CMT INIT" , "Begin() state =%d" , state);
+    // state = _radio->begin();
+    // if (state){
+    //    Hoymiles.getMessageOutput()->println("Radio begin OK" );
+    // }
+    // else{
+    //    Hoymiles.getMessageOutput()->println("Radio begin KO" );
+    // }
+   
 
     setCountryMode(CountryModeId_t::MODE_EU);
     cmtSwitchDtuFreq(_inverterTargetFrequency); // start dtu at work freqency, for fast Rx if inverter is already on and frequency switched
