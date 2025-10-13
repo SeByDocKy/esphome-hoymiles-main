@@ -90,7 +90,7 @@ void HoymilesRadio_CMT::init(const int8_t pin_sdio, const int8_t pin_clk, const 
 
     _radio.reset(new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs));
 
-    a = CMT2300A._init_pins();
+    a = CMT2300A::_init_pins();
     if (a){
        Hoymiles.getMessageOutput()->println("init_pin OK" );
     }
@@ -98,7 +98,7 @@ void HoymilesRadio_CMT::init(const int8_t pin_sdio, const int8_t pin_clk, const 
        Hoymiles.getMessageOutput()->println("init_pin KO" );
     }
     
-    b = CMT2300A._init_radio();
+    b = CMT2300A::_init_radio();
 
     if (b){
        Hoymiles.getMessageOutput()->println("init_radio OK" );
