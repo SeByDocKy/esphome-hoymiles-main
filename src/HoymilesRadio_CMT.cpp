@@ -88,30 +88,27 @@ void HoymilesRadio_CMT::init(const int8_t pin_sdio, const int8_t pin_clk, const 
     bool a,b;
     _dtuSerial.u64 = 0;
 
-    // _radio.reset(new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs));
+    _radio.reset(new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs));
 
-    // _radio->begin();
+    _radio->begin();
 
-    auto current_cmt = new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs);
+    // auto current_cmt = new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs);
+    // _radio.reset(current_cmt);
+    // a = CMT2300A::_init_pins();
+    // if (a){
+    //    Hoymiles.getMessageOutput()->println("init_pin OK" );
+    // }
+    // else{
+    //    Hoymiles.getMessageOutput()->println("init_pin KO" );
+    // } 
+    // b = CMT2300A::_init_radio();
 
-    _radio.reset(current_cmt);
-
-    a = CMT2300A::_init_pins();
-    if (a){
-       Hoymiles.getMessageOutput()->println("init_pin OK" );
-    }
-    else{
-       Hoymiles.getMessageOutput()->println("init_pin KO" );
-    }
-    
-    b = CMT2300A::_init_radio();
-
-    if (b){
-       Hoymiles.getMessageOutput()->println("init_radio OK" );
-    }
-    else{
-       Hoymiles.getMessageOutput()->println("init_radio KO" );
-    }
+    // if (b){
+    //    Hoymiles.getMessageOutput()->println("init_radio OK" );
+    // }
+    // else{
+    //    Hoymiles.getMessageOutput()->println("init_radio KO" );
+    // }
 
    
        
