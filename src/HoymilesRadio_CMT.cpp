@@ -92,10 +92,10 @@ void HoymilesRadio_CMT::init(const int8_t pin_sdio, const int8_t pin_clk, const 
 
     state = _radio->begin();
     if (state){
-       Hoymiles.getMessageOutput()->println("begin OK" );
+       Hoymiles.getMessageOutput()->println("CMT: begin OK" );
     }
     else{
-       Hoymiles.getMessageOutput()->println("begin KO" );
+       Hoymiles.getMessageOutput()->println("CMT: begin KO" );
     }
 
     // auto current_cmt = new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs);
