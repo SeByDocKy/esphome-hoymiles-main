@@ -92,7 +92,7 @@ void HoymilesRadio_CMT::init(const int8_t pin_sdio, const int8_t pin_clk, const 
 
     // _radio->begin();
 
-    current_cmt =new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs);
+    auto current_cmt =new CMT2300A(pin_sdio, pin_clk, pin_cs, pin_fcs);
 
     _radio.reset(current_cmt);
 
