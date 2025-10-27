@@ -4,8 +4,8 @@
  */
 #include "Hoymiles.h"
 #include "Utils.h"
-#include "inverters/HERF_2CH.h"
-#include "inverters/HERF_4CH.h"
+// #include "inverters/HERF_2CH.h"
+// #include "inverters/HERF_4CH.h"
 #ifdef HMS_INVERTER
   #include "inverters/HMS_1CH.h"
   #include "inverters/HMS_1CHv2.h"
@@ -169,11 +169,12 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
 {
     std::shared_ptr<InverterAbstract> i = nullptr;
 #ifdef HMS_INVERTER
-    if (HMT_4CH::isValidSerial(serial)) {
-        i = std::make_shared<HMT_4CH>(_radioCmt.get(), serial);
-    } else if (HMT_6CH::isValidSerial(serial)) {
-        i = std::make_shared<HMT_6CH>(_radioCmt.get(), serial);
-    } else if (HMS_4CH::isValidSerial(serial)) {
+    // if (HMT_4CH::isValidSerial(serial)) {
+    //     i = std::make_shared<HMT_4CH>(_radioCmt.get(), serial);
+    // } else if (HMT_6CH::isValidSerial(serial)) {
+    //     i = std::make_shared<HMT_6CH>(_radioCmt.get(), serial);
+    // } 
+    if (HMS_4CH::isValidSerial(serial)) {
         i = std::make_shared<HMS_4CH>(_radioCmt.get(), serial);
     } else if (HMS_2CH::isValidSerial(serial)) {
         i = std::make_shared<HMS_2CH>(_radioCmt.get(), serial);
@@ -190,11 +191,12 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
         i = std::make_shared<HM_2CH>(_radioNrf.get(), serial);
     } else if (HM_1CH::isValidSerial(serial)) {
         i = std::make_shared<HM_1CH>(_radioNrf.get(), serial);
-    } else if (HERF_2CH::isValidSerial(serial)) {
-        i = std::make_shared<HERF_2CH>(_radioNrf.get(), serial);
-    } else if (HERF_4CH::isValidSerial(serial)) {
-        i = std::make_shared<HERF_4CH>(_radioNrf.get(), serial);
-    }
+    } 
+    // else if (HERF_2CH::isValidSerial(serial)) {
+    //     i = std::make_shared<HERF_2CH>(_radioNrf.get(), serial);
+    // } else if (HERF_4CH::isValidSerial(serial)) {
+    //     i = std::make_shared<HERF_4CH>(_radioNrf.get(), serial);
+    // }
 #endif
     if (i) {
         i->setName(name);
@@ -269,7 +271,7 @@ HoymilesRadio_NRF* HoymilesClass::getRadioNrf()
     return _radioNrf.get();
 }
 #endif
- #ifdef HMS_INVERTER
+#ifdef HMS_INVERTER
 HoymilesRadio_CMT* HoymilesClass::getRadioCmt()
 {
     return _radioCmt.get();
