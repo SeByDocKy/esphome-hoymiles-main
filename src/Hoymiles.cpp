@@ -6,15 +6,19 @@
 #include "Utils.h"
 #include "inverters/HERF_2CH.h"
 #include "inverters/HERF_4CH.h"
-#include "inverters/HMS_1CH.h"
-#include "inverters/HMS_1CHv2.h"
-#include "inverters/HMS_2CH.h"
-#include "inverters/HMS_4CH.h"
-#include "inverters/HMT_4CH.h"
-#include "inverters/HMT_6CH.h"
-#include "inverters/HM_1CH.h"
-#include "inverters/HM_2CH.h"
-#include "inverters/HM_4CH.h"
+#ifdef HMS_INVERTER
+  #include "inverters/HMS_1CH.h"
+  #include "inverters/HMS_1CHv2.h"
+  #include "inverters/HMS_2CH.h"
+  #include "inverters/HMS_4CH.h"
+  #include "inverters/HMT_4CH.h"
+  #include "inverters/HMT_6CH.h"
+#endif
+#ifdef HM_INVERTER
+  #include "inverters/HM_1CH.h"
+  #include "inverters/HM_2CH.h"
+  #include "inverters/HM_4CH.h"
+#endif
 #include <Arduino.h>
 
 HoymilesClass Hoymiles;
