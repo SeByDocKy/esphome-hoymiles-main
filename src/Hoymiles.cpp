@@ -22,7 +22,7 @@ HoymilesClass Hoymiles;
 void HoymilesClass::init()
 {
     _pollInterval = 0;
-    // _radioNrf.reset(new HoymilesRadio_NRF());
+    _radioNrf.reset(new HoymilesRadio_NRF());
     _radioCmt.reset(new HoymilesRadio_CMT());
 }
 
