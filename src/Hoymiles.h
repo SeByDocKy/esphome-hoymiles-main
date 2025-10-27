@@ -3,7 +3,7 @@
 #ifdef HMS_INVERTER
   #include "HoymilesRadio_CMT.h"
 #endif
- #ifdef HM_INVERTER
+#ifdef HM_INVERTER
   #include "HoymilesRadio_NRF.h"
 #endif
 #include "inverters/InverterAbstract.h"
