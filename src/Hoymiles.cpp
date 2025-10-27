@@ -206,7 +206,7 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
     else if (HERF_4CH::isValidSerial(serial)) {
         i = std::make_shared<HERF_4CH>(_radioNrf.get(), serial);
     }
-#endif
+// #endif
     if (i) {
         i->setName(name);
         i->init();
