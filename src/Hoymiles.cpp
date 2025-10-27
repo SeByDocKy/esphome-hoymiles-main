@@ -11,8 +11,8 @@
   #include "inverters/HMS_1CHv2.h"
   #include "inverters/HMS_2CH.h"
   #include "inverters/HMS_4CH.h"
-  #include "inverters/HMT_4CH.h"
-  #include "inverters/HMT_6CH.h"
+//  #include "inverters/HMT_4CH.h"
+//  #include "inverters/HMT_6CH.h"
 #endif
 #ifdef HM_INVERTER
   #include "inverters/HM_1CH.h"
