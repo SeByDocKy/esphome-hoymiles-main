@@ -30,15 +30,19 @@ void HoymilesClass::init()
 #endif    
 }
 
+#ifdef HM_INVERTER
 void HoymilesClass::initNRF(SPIClass* initialisedSpiBus, const uint8_t pinCE, const uint8_t pinIRQ)
 {
     _radioNrf->init(initialisedSpiBus, pinCE, pinIRQ);
 }
+#endif
 
+#ifdef HMS_INVERTER
 void HoymilesClass::initCMT(const int8_t pin_sdio, const int8_t pin_clk, const int8_t pin_cs, const int8_t pin_fcs, const int8_t pin_gpio2, const int8_t pin_gpio3)
 {
     _radioCmt->init(pin_sdio, pin_clk, pin_cs, pin_fcs, pin_gpio2, pin_gpio3);
 }
+#endif
 
 void HoymilesClass::loop()
 {
@@ -160,6 +164,7 @@ void HoymilesClass::loop()
 std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, const uint64_t serial)
 {
     std::shared_ptr<InverterAbstract> i = nullptr;
+    #ifdef HMS_INVERTER
     if (HMT_4CH::isValidSerial(serial)) {
         i = std::make_shared<HMT_4CH>(_radioCmt.get(), serial);
     } else if (HMT_6CH::isValidSerial(serial)) {
@@ -172,7 +177,10 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
         i = std::make_shared<HMS_1CH>(_radioCmt.get(), serial);
     } else if (HMS_1CHv2::isValidSerial(serial)) {
         i = std::make_shared<HMS_1CHv2>(_radioCmt.get(), serial);
-    } else if (HM_4CH::isValidSerial(serial)) {
+    }
+    #endif
+    #ifdef HM_INVERTER 
+    else if (HM_4CH::isValidSerial(serial)) {
         i = std::make_shared<HM_4CH>(_radioNrf.get(), serial);
     } else if (HM_2CH::isValidSerial(serial)) {
         i = std::make_shared<HM_2CH>(_radioNrf.get(), serial);
@@ -183,7 +191,7 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
     } else if (HERF_4CH::isValidSerial(serial)) {
         i = std::make_shared<HERF_4CH>(_radioNrf.get(), serial);
     }
-
+    #endif
     if (i) {
         i->setName(name);
         i->init();
@@ -251,21 +259,25 @@ size_t HoymilesClass::getNumInverters() const
 {
     return _inverters.size();
 }
-
+#ifdef HM_INVERTER
 HoymilesRadio_NRF* HoymilesClass::getRadioNrf()
 {
     return _radioNrf.get();
 }
-
+#endif
+ #ifdef HMS_INVERTER
 HoymilesRadio_CMT* HoymilesClass::getRadioCmt()
 {
     return _radioCmt.get();
 }
+#endif
 
-bool HoymilesClass::isAllRadioIdle() const
-{
-    return _radioNrf.get()->isIdle() && _radioCmt.get()->isIdle();
-}
+
+// bool HoymilesClass::isAllRadioIdle() const
+// {
+//     return _radioNrf.get()->isIdle() && _radioCmt.get()->isIdle();
+// }
+
 
 uint32_t HoymilesClass::PollInterval() const
 {
