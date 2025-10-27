@@ -180,7 +180,7 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
     }
 #endif
 #ifdef HM_INVERTER 
-    else if (HM_4CH::isValidSerial(serial)) {
+    if (HM_4CH::isValidSerial(serial)) { //else if
         i = std::make_shared<HM_4CH>(_radioNrf.get(), serial);
     } else if (HM_2CH::isValidSerial(serial)) {
         i = std::make_shared<HM_2CH>(_radioNrf.get(), serial);
