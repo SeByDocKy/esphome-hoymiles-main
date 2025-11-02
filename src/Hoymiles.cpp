@@ -57,7 +57,8 @@ void HoymilesClass::loop()
 #ifdef HMS_INVERTER    
     _radioCmt->loop();
 #endif    
-   _messageOutput->println("# inverter: %d",getNumInverters());
+    _messageOutput->print("# inverter"); 
+    _messageOutput->println(getNumInverters());
     if (getNumInverters() == 0) {
         return;
     }
