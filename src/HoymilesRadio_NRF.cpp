@@ -38,7 +38,7 @@ void HoymilesRadio_NRF::init(SPIClass* initialisedSpiBus, const uint8_t pinCE, c
 
 void HoymilesRadio_NRF::loop()
 {
-    Hoymiles.getMessageOutput()->println("Entered NRF loop");
+    // Hoymiles.getMessageOutput()->println("Entered NRF loop");
     if (!_isInitialized) {
         return;
     }
