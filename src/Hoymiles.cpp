@@ -66,7 +66,9 @@ void HoymilesClass::loop()
     if (millis() - _lastPoll > (_pollInterval * 1000)) {
         static uint8_t inverterPos = 0;
 
-        std::shared_ptr<InverterAbstract> iv = getInverterByPos(inverterPos);
+        // std::shared_ptr<InverterAbstract> iv = getInverterByPos(inverterPos);
+        std::unique_ptr<InverterAbstract> iv = getInverterByPos(inverterPos);
+        
         if ((iv == nullptr) || ((iv != nullptr) && (!iv->getRadio()->isInitialized()))) {
             if (++inverterPos >= getNumInverters()) {
                 inverterPos = 0;
