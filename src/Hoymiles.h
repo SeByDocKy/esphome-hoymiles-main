@@ -57,12 +57,12 @@ public:
 private:
     // std::vector<std::unique_ptr<InverterAbstract>> _inverters;
     std::vector<std::shared_ptr<InverterAbstract>> _inverters;
-#ifdef HM_INVERTER
+// #ifdef HM_INVERTER
     std::unique_ptr<HoymilesRadio_NRF> _radioNrf;
-#endif
-#ifdef HMS_INVERTER
+// #endif
+// #ifdef HMS_INVERTER
     std::unique_ptr<HoymilesRadio_CMT> _radioCmt;
-#endif
+// #endif
     std::mutex _mutex;
 
     uint32_t _pollInterval = 0;
