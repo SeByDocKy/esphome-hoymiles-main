@@ -6,12 +6,12 @@
 #include "Utils.h"
 
 #ifdef HMS_INVERTER
-  #include "inverters/HMS_1CH_old.h"
-  #include "inverters/HMS_1CHv2_old.h"
-  #include "inverters/HMS_2CH_old.h"
-  #include "inverters/HMS_4CH_old.h"
-  #include "inverters/HMT_4CH_old.h"
-  #include "inverters/HMT_6CH_old.h"
+  #include "inverters/HMS_1CH.h"
+  #include "inverters/HMS_1CHv2.h"
+  #include "inverters/HMS_2CH.h"
+  #include "inverters/HMS_4CH.h"
+  #include "inverters/HMT_4CH.h"
+  #include "inverters/HMT_6CH.h"
 #endif
 #ifdef HM_INVERTER
   #include "inverters/HERF_2CH.h"
