@@ -174,7 +174,7 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
     std::shared_ptr<InverterAbstract> i = nullptr;
     // std::unique_ptr<InverterAbstract> i = nullptr;
 
-// #ifdef HMS_INVERTER
+ #ifdef HMS_INVERTER
     if (HMT_4CH::isValidSerial(serial)) {
         i = std::make_shared<HMT_4CH>(_radioCmt.get(), serial);
     } 
@@ -194,10 +194,10 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
     else if (HMS_1CHv2::isValidSerial(serial)) {
         i = std::make_shared<HMS_1CHv2>(_radioCmt.get(), serial);
     }
-// #endif
-// #ifdef HM_INVERTER 
-    // if (HM_4CH::isValidSerial(serial)) {
-    else if (HM_4CH::isValidSerial(serial)) {  //else if
+#endif
+#ifdef HM_INVERTER 
+    if (HM_4CH::isValidSerial(serial)) {
+    // else if (HM_4CH::isValidSerial(serial)) {  //else if
         i = std::make_shared<HM_4CH>(_radioNrf.get(), serial);
     } 
     else if (HM_2CH::isValidSerial(serial)) {
@@ -212,7 +212,7 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
     else if (HERF_4CH::isValidSerial(serial)) {
         i = std::make_shared<HERF_4CH>(_radioNrf.get(), serial);
     }
-// #endif
+#endif
     if (i) {
         i->setName(name);
         i->init();
