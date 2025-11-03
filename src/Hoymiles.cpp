@@ -4,21 +4,22 @@
  */
 #include "Hoymiles.h"
 #include "Utils.h"
-#include "inverters/HERF_2CH.h"
-#include "inverters/HERF_4CH.h"
-// #ifdef HMS_INVERTER
+
+#ifdef HMS_INVERTER
   #include "inverters/HMS_1CH.h"
   #include "inverters/HMS_1CHv2.h"
   #include "inverters/HMS_2CH.h"
   #include "inverters/HMS_4CH.h"
   #include "inverters/HMT_4CH.h"
   #include "inverters/HMT_6CH.h"
-// #endif
-// #ifdef HM_INVERTER
+#endif
+#ifdef HM_INVERTER
+  #include "inverters/HERF_2CH.h"
+  #include "inverters/HERF_4CH.h"
   #include "inverters/HM_1CH.h"
   #include "inverters/HM_2CH.h"
   #include "inverters/HM_4CH.h"
-// #endif
+#endif
 #include <Arduino.h>
 
 HoymilesClass Hoymiles;
@@ -284,18 +285,18 @@ size_t HoymilesClass::getNumInverters() const
 {
     return _inverters.size();
 }
-// #ifdef HM_INVERTER
+#ifdef HM_INVERTER
 HoymilesRadio_NRF* HoymilesClass::getRadioNrf()
 {
     return _radioNrf.get();
 }
-// #endif
-// #ifdef HMS_INVERTER
+#endif
+#ifdef HMS_INVERTER
 HoymilesRadio_CMT* HoymilesClass::getRadioCmt()
 {
     return _radioCmt.get();
 }
-// #endif
+#endif
 
 #ifdef HM_INVERTER
 bool HoymilesClass::isAllRadioIdle() const
