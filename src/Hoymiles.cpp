@@ -66,8 +66,8 @@ void HoymilesClass::loop()
     if (millis() - _lastPoll > (_pollInterval * 1000)) {
         static uint8_t inverterPos = 0;
 
-        std::shared_ptr<InverterAbstract> iv = getInverterByPos(inverterPos);
-        // std::unique_ptr<InverterAbstract> iv = getInverterByPos(inverterPos);
+        // std::shared_ptr<InverterAbstract> iv = getInverterByPos(inverterPos);
+        std::unique_ptr<InverterAbstract> iv = getInverterByPos(inverterPos);
         
         if ((iv == nullptr) || ((iv != nullptr) && (!iv->getRadio()->isInitialized()))) {
             if (++inverterPos >= getNumInverters()) {
@@ -168,11 +168,11 @@ void HoymilesClass::loop()
     }
 }
 
-std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, const uint64_t serial)
-// std::unique_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, const uint64_t serial)
+// std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, const uint64_t serial)
+std::unique_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, const uint64_t serial)
 {
-    std::shared_ptr<InverterAbstract> i = nullptr;
-    // std::unique_ptr<InverterAbstract> i = nullptr;
+    // std::shared_ptr<InverterAbstract> i = nullptr;
+    std::unique_ptr<InverterAbstract> i = nullptr;
 
 // #ifdef HMS_INVERTER
     if (HMT_4CH::isValidSerial(serial)) {
@@ -223,8 +223,8 @@ std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, c
     return nullptr;
 }
 
-std::shared_ptr<InverterAbstract> HoymilesClass::getInverterByPos(const uint8_t pos)
-// std::unique_ptr<InverterAbstract> HoymilesClass::getInverterByPos(const uint8_t pos)
+// std::shared_ptr<InverterAbstract> HoymilesClass::getInverterByPos(const uint8_t pos)
+std::unique_ptr<InverterAbstract> HoymilesClass::getInverterByPos(const uint8_t pos)
 {
     if (pos >= _inverters.size()) {
         return nullptr;
@@ -233,8 +233,8 @@ std::shared_ptr<InverterAbstract> HoymilesClass::getInverterByPos(const uint8_t 
     }
 }
 
-std::shared_ptr<InverterAbstract> HoymilesClass::getInverterBySerial(const uint64_t serial)
-// std::unique_ptr<InverterAbstract> HoymilesClass::getInverterBySerial(const uint64_t serial)
+// std::shared_ptr<InverterAbstract> HoymilesClass::getInverterBySerial(const uint64_t serial)
+std::unique_ptr<InverterAbstract> HoymilesClass::getInverterBySerial(const uint64_t serial)
 {
     for (uint8_t i = 0; i < _inverters.size(); i++) {
         if (_inverters[i]->serial() == serial) {
@@ -244,15 +244,15 @@ std::shared_ptr<InverterAbstract> HoymilesClass::getInverterBySerial(const uint6
     return nullptr;
 }
 
-std::shared_ptr<InverterAbstract> HoymilesClass::getInverterByFragment(const fragment_t& fragment)
-// std::unique_ptr<InverterAbstract> HoymilesClass::getInverterByFragment(const fragment_t& fragment)
+// std::shared_ptr<InverterAbstract> HoymilesClass::getInverterByFragment(const fragment_t& fragment)
+std::unique_ptr<InverterAbstract> HoymilesClass::getInverterByFragment(const fragment_t& fragment)
 {
     if (fragment.len <= 4) {
         return nullptr;
     }
 
-    std::shared_ptr<InverterAbstract> inv;
-    // std::unique_ptr<InverterAbstract> inv;
+    // std::shared_ptr<InverterAbstract> inv;
+    std::unique_ptr<InverterAbstract> inv;
     for (uint8_t i = 0; i < _inverters.size(); i++) {
         inv = _inverters[i];
         serial_u p;
