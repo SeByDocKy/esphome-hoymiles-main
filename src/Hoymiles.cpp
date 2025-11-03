@@ -298,23 +298,23 @@ HoymilesRadio_CMT* HoymilesClass::getRadioCmt()
 }
 // #endif
 
-#ifdef HM_INVERTER
-bool HoymilesClass::isAllRadioIdle() const
-{
-    return _radioNrf.get()->isIdle();
-}
-#endif
-#ifdef HMS_INVERTER
-bool HoymilesClass::isAllRadioIdle() const
-{
-    return _radioCmt.get()->isIdle();
-}
-#endif
-
+// #ifdef HM_INVERTER
 // bool HoymilesClass::isAllRadioIdle() const
 // {
-//     return _radioNrf.get()->isIdle() && _radioCmt.get()->isIdle();
+//     return _radioNrf.get()->isIdle();
 // }
+// #endif
+// #ifdef HMS_INVERTER
+// bool HoymilesClass::isAllRadioIdle() const
+// {
+//     return _radioCmt.get()->isIdle();
+// }
+// #endif
+
+bool HoymilesClass::isAllRadioIdle() const
+{
+    return _radioNrf.get()->isIdle() && _radioCmt.get()->isIdle();
+}
 
 
 uint32_t HoymilesClass::PollInterval() const
