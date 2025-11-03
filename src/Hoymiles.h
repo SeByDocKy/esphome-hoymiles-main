@@ -35,12 +35,6 @@ public:
     std::shared_ptr<InverterAbstract> getInverterBySerial(const uint64_t serial);
     std::shared_ptr<InverterAbstract> getInverterByFragment(const fragment_t& fragment);
 
-    // std::unique_ptr<InverterAbstract> addInverter(const char* name, const uint64_t serial);
-    // std::unique_ptr<InverterAbstract> getInverterByPos(const uint8_t pos);
-    // std::unique_ptr<InverterAbstract> getInverterBySerial(const uint64_t serial);
-    // std::unique_ptr<InverterAbstract> getInverterByFragment(const fragment_t& fragment);
-
-
     void removeInverterBySerial(const uint64_t serial);
     size_t getNumInverters() const;
 // #ifdef HM_INVERTER
@@ -55,7 +49,6 @@ public:
     bool isAllRadioIdle() const;
 
 private:
-    // std::vector<std::unique_ptr<InverterAbstract>> _inverters;
     std::vector<std::shared_ptr<InverterAbstract>> _inverters;
 // #ifdef HM_INVERTER
     std::unique_ptr<HoymilesRadio_NRF> _radioNrf;
