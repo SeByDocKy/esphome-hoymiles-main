@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #pragma once
-#ifdef HMS_INVERTER
-  #include "HoymilesRadio_CMT.h"
-#endif
-#ifdef HM_INVERTER
-  #include "HoymilesRadio_NRF.h"
-#endif
+// #ifdef HMS_INVERTER
+#include "HoymilesRadio_CMT.h"
+// #endif
+// #ifdef HM_INVERTER
+#include "HoymilesRadio_NRF.h"
+// #endif
 #include "inverters/InverterAbstract.h"
 #include "types.h"
 #include <Print.h>
