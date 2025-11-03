@@ -55,7 +55,7 @@ public:
     bool isAllRadioIdle() const;
 
 private:
-    std::vector<std::shared_ptr<InverterAbstract>> _inverters;
+    std::vector<std::unique_ptr<InverterAbstract>> _inverters;
     // std::vector<std::shared_ptr<InverterAbstract>> _inverters;
 #ifdef HM_INVERTER
     std::unique_ptr<HoymilesRadio_NRF> _radioNrf;
