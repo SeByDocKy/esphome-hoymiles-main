@@ -43,12 +43,12 @@ public:
 
     void removeInverterBySerial(const uint64_t serial);
     size_t getNumInverters() const;
-#ifdef HM_INVERTER
+// #ifdef HM_INVERTER
     HoymilesRadio_NRF* getRadioNrf();
-#endif
-#ifdef HMS_INVERTER
+// #endif
+// #ifdef HMS_INVERTER
     HoymilesRadio_CMT* getRadioCmt();
-#endif
+// #endif
     uint32_t PollInterval() const;
     void setPollInterval(const uint32_t interval);
 
