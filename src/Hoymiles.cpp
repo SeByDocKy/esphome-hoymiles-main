@@ -284,18 +284,18 @@ size_t HoymilesClass::getNumInverters() const
 {
     return _inverters.size();
 }
-#ifdef HM_INVERTER
+// #ifdef HM_INVERTER
 HoymilesRadio_NRF* HoymilesClass::getRadioNrf()
 {
     return _radioNrf.get();
 }
-#endif
-#ifdef HMS_INVERTER
+// #endif
+// #ifdef HMS_INVERTER
 HoymilesRadio_CMT* HoymilesClass::getRadioCmt()
 {
     return _radioCmt.get();
 }
-#endif
+// #endif
 
 #ifdef HM_INVERTER
 bool HoymilesClass::isAllRadioIdle() const
