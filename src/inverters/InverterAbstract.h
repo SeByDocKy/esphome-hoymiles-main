@@ -40,6 +40,9 @@ public:
     virtual const byteAssign_t* getByteAssignment() const = 0;
     virtual uint8_t getByteAssignmentSize() const = 0;
 
+    void setTypeInv(uint8_t value){this->_typeinv = value;}
+    uint8_t getTypeInv(){return this->_typeinv;}
+
     bool isProducing();
     bool isReachable();
 
@@ -89,6 +92,7 @@ protected:
 private:
     serial_u _serial;
     String _serialString;
+    uint8_t _typeinv;
     char _name[MAX_NAME_LENGTH] = "";
     fragment_t _rxFragmentBuffer[MAX_RF_FRAGMENT_COUNT];
     uint8_t _rxFragmentMaxPacketId = 0;
