@@ -170,49 +170,62 @@ void HoymilesClass::loop()
 std::shared_ptr<InverterAbstract> HoymilesClass::addInverter(const char* name, const uint64_t serial)
 {
     std::shared_ptr<InverterAbstract> i = nullptr;
+    uint8_t typeinv=0;
 
  #ifdef HMS_INVERTER
     if (HMT_4CH::isValidSerial(serial)) {
         i = std::make_shared<HMT_4CH>(_radioCmt.get(), serial);
+        typeinv=1;
     } 
     else if (HMT_6CH::isValidSerial(serial)) {
         i = std::make_shared<HMT_6CH>(_radioCmt.get(), serial);
+        typeinv=1;
     } 
     else if (HMS_4CH::isValidSerial(serial)) {
     //if (HMS_4CH::isValidSerial(serial)) {
         i = std::make_shared<HMS_4CH>(_radioCmt.get(), serial);
+        typeinv=1;
     } 
     else if (HMS_2CH::isValidSerial(serial)) {
         i = std::make_shared<HMS_2CH>(_radioCmt.get(), serial);
+        typeinv=1;
     } 
     else if (HMS_1CH::isValidSerial(serial)) {
         i = std::make_shared<HMS_1CH>(_radioCmt.get(), serial);
+        typeinv=1;
     } 
     else if (HMS_1CHv2::isValidSerial(serial)) {
         i = std::make_shared<HMS_1CHv2>(_radioCmt.get(), serial);
+        typeinv=1;
     }
 #endif
 #ifdef HM_INVERTER 
     if (HM_4CH::isValidSerial(serial)) {
     // else if (HM_4CH::isValidSerial(serial)) {  //else if
         i = std::make_shared<HM_4CH>(_radioNrf.get(), serial);
+        typeinv=0;
     } 
     else if (HM_2CH::isValidSerial(serial)) {
         i = std::make_shared<HM_2CH>(_radioNrf.get(), serial);
+        typeinv=0;
     } 
     else if (HM_1CH::isValidSerial(serial)) {
         i = std::make_shared<HM_1CH>(_radioNrf.get(), serial);
+        typeinv=0;
     } 
     else if (HERF_2CH::isValidSerial(serial)) {
         i = std::make_shared<HERF_2CH>(_radioNrf.get(), serial);
+        typeinv=0;
     } 
     else if (HERF_4CH::isValidSerial(serial)) {
         i = std::make_shared<HERF_4CH>(_radioNrf.get(), serial);
+        typeinv=0;
     }
 #endif
     if (i) {
         i->setName(name);
         i->init();
+        i->setTypeInv(typeinv);
         _inverters.push_back(std::move(i));
         return _inverters.back();
     }
