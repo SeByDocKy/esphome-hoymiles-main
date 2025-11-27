@@ -6,7 +6,7 @@
         "name": "Thomas Basler"
     },
     "version": "0.0.1",
-    "frameworks": "arduino",
+    "frameworks": "*",
     "platforms": [
         "espressif32"
     ],
