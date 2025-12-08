@@ -5,7 +5,7 @@
 
 #define CMT2300A_ONE_STEP_SIZE 2500 // frequency channel step size for fast frequency hopping operation: One step size is 2.5 kHz.
 #define FH_OFFSET 100 // value * CMT2300A_ONE_STEP_SIZE = channel frequency offset
-#define CMT_SPI_SPEED 5000000           //4000000 // 4 MHz
+#define CMT_SPI_SPEED 5000000     //new value 5MHZ    old  4000000 // 4 MHz
 
 #define CMT_BASE_FREQ_900 900000000
 #define CMT_BASE_FREQ_860 860000000
