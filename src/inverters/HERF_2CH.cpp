@@ -9,15 +9,15 @@ static const byteAssign_t byteAssignment[] = {
     { TYPE_DC, CH0, FLD_UDC, UNIT_V, 2, 2, 10, false, 1 },
     { TYPE_DC, CH0, FLD_IDC, UNIT_A, 6, 2, 100, false, 2 },
     { TYPE_DC, CH0, FLD_PDC, UNIT_W, 10, 2, 10, false, 1 },
-    { TYPE_DC, CH0, FLD_YD, UNIT_WH, 22, 2, 1, false, 0 },
     { TYPE_DC, CH0, FLD_YT, UNIT_KWH, 14, 4, 1000, false, 3 },
+    { TYPE_DC, CH0, FLD_YD, UNIT_WH, 22, 2, 1, false, 0 },
     { TYPE_DC, CH0, FLD_IRR, UNIT_PCT, CALC_CH_IRR, CH0, CMD_CALC, false, 3 },
 
     { TYPE_DC, CH1, FLD_UDC, UNIT_V, 4, 2, 10, false, 1 },
     { TYPE_DC, CH1, FLD_IDC, UNIT_A, 8, 2, 100, false, 2 },
     { TYPE_DC, CH1, FLD_PDC, UNIT_W, 12, 2, 10, false, 1 },
-    { TYPE_DC, CH1, FLD_YD, UNIT_WH, 24, 2, 1, false, 0 },
     { TYPE_DC, CH1, FLD_YT, UNIT_KWH, 18, 4, 1000, false, 3 },
+    { TYPE_DC, CH1, FLD_YD, UNIT_WH, 24, 2, 1, false, 0 },
     { TYPE_DC, CH1, FLD_IRR, UNIT_PCT, CALC_CH_IRR, CH1, CMD_CALC, false, 3 },
 
     { TYPE_AC, CH0, FLD_UAC, UNIT_V, 26, 2, 10, false, 1 },
